@@ -1,20 +1,19 @@
 import ExpenseItem from "./ExpenseItem";
-import Card from "../UI/Card";
+import "./ExpenseList.css";
 
 const ExpenseList = (props) => {
-  if (props.filteredExpense.length == 0) return <h2>No Expense Found</h2>;
+  if (props.expenses.length === 0)
+    return <h2 className="expenses-list__fallback">No Expense Found</h2>;
   else
-    return filteredExpense.map((expense) => (
-      <Card className="expenses">
-        <li>
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        </li>
-      </Card>
+    return props.expenses.map((expense) => (
+      // <ul className="expenses-list">
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      // </ul>
     ));
 };
 
